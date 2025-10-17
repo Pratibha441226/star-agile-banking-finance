@@ -11,7 +11,7 @@ pipeline {
 
             }        
         }
-      //* stage('Create Docker Image') {
+        stage('Create Docker Image') {
            steps {
                sh 'docker build -t pratibha012/financeme:1.0 .'
                     }
@@ -27,7 +27,7 @@ pipeline {
            steps {
                sh 'docker push pratibha012/financeme:1.0'
                      }
-                }   *//
+                }   
      stage('Config & Deployment') {
             steps {
                 
