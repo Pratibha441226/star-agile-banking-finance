@@ -16,5 +16,17 @@ pipeline {
                sh 'docker build -t pratibha012/financeme:1.0 .'
                     }
                 }
+     stage('Docker-Login') {
+           steps {
+               withCredentials([usernamePassword(credentialsId: 'dockercreds', passwordVariable: 'dockerpassword', usernameVariable: 'dockerlogin')]) {
+               sh 'docker login -u ${dockerlogin} -p ${dockerpassword}'
+                                   }
+                        }
+                }
+       stage('Push-Image') {
+           steps {
+               sh 'docker push pratibha012/financeme:1.0'
+                     }
+                }
  }
     }
